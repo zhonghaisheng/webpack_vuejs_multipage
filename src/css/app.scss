@@ -1,0 +1,69 @@
+@charset "utf-8";
+// reset
+html, body { font-family: "Helvetica Neue","Microsoft YaHei", Helvetica, STHeiTi, Arial, sans-serif;
+}
+html * { outline: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+body,th,td,p,ol,ul,li,dl,dt,dd,a,h1,h2,h3,h4,h5,h6,form,fieldset,input,legend,select,textarea{ margin:0; padding:0; }
+input,img,fieldset{ border:none; }
+input, select,fieldset{ vertical-align:middle; }
+ul, ol { padding-left: 0; list-style-type: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+img { max-width: 100%; vertical-align: top; }
+i, cite, em, var, address, dfn { font-style: normal; }
+a:link{ text-decoration: none }
+a:hover{ text-decoration: none }
+a:active{ text-decoration: none }
+a:visited{ text-decoration: none }
+
+// When use placeholder, this css can hide it when the input focused. This is selectable, not must.
+input:focus::-webkit-input-placeholder { color: transparent; }
+input:focus:-moz-placeholder, input:focus::-moz-placeholder { color: transparent; }
+
+button, input[type=button], input[type=password], input[type=submit], input[type=text], textarea { -webkit-appearance: none; }
+input:-ms-clear { display:none; }  /* clear IE10 X */
+// in Android WebView, The strange situation appears when the input element input
+input { -webkit-user-modify: read-write-plaintext-only; }
+select{ overflow-x:hidden; }
+pre{
+    white-space: pre-wrap; /* css-3 */ 
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */ 
+    white-space: -pre-wrap; /* Opera 4-6 */ 
+    white-space: -o-pre-wrap; /* Opera 7 */ 
+    word-wrap: break-word; /* Internet Explorer 5.5+ */ 
+}
+
+// common css
+.clear::after{ content:""; display:block; height:0; clear:both; line-height: 0; visibility: hidden; }  
+// position
+.tl { text-align:left; }
+.tc { text-align:center; }
+.tr { text-align:right; }
+.fl { float:left; }
+.fr { float:right; }
+.vm { vertical-align: middle; }
+.pr { position: relative; }
+.pa { position: absolute; }
+.none { display: none; }
+.block { display: block; }
+
+/* ellipsis */
+.elli { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+del { text-decoration: line-through; }
+hr { display:block; height:1px; border:0; border-top:1px solid #cccccc; margin:1em 0; padding:0; }
+html, body {
+	width:100%;
+	max-width:750px;
+	margin:0 auto;
+}
+
+$bg_url:"../images";
+$baseSize:(750/16);
+@function pxToRem($px) {
+  @return $px / $baseSize * 1rem;
+}
+
+@mixin bg_center($url){
+	background:url(#{$bg_url}/#{$url}) center top no-repeat;
+	background-size:100%  100%;
+}
