@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <img :src="imgRootUrl+'logo.png'">
-    <router-link to="/routerTest">routerTest</router-link>
-    <router-view/>
-    
+    <topper></topper>
   </div>
 </template>
 
 <script>
-// import './js/common.js'
-// import './css/app.css'
+import './js/common.js'
+import './css/app.css'
+import topper from './components/topper.vue'
 export default {
   name: 'App',
+  components:{
+    topper:topper
+  },
   data(){
     return {
       imgRootUrl:config.imgRootUrl
@@ -19,14 +20,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
