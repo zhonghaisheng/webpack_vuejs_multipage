@@ -13,6 +13,19 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+const express = require('express');
+const app = express()  //  从这后面开始加
+ 
+const appData = require('../static/json/onlyFloorMaster.json')
+// 使用路由
+const apiRoutes = express.Router()
+// 使用api的方法来创建连接时候的请求
+// apiRoutes.post('/onlyFloorMaster', function (req, res) {
+//   res.json(appData);
+// })
+// 调用api
+app.use('/api', apiRoutes)
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -22,6 +35,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
+    before(app) {
+      // 模拟路由，输入/api/goods，会获取appData的数据
+      app.post('/api/onlyFloorMaster', (req, res) => {
+        res.json(appData)
+      })
+    },
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
